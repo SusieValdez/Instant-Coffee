@@ -55,7 +55,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 resource_name = "Jump"
 length = 0.1
 tracks/0/type = "value"
@@ -71,7 +71,7 @@ tracks/0/keys = {
 "values": [ 17 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=6]
 resource_name = "PickupItem"
 length = 0.2
 tracks/0/type = "value"
@@ -87,7 +87,7 @@ tracks/0/keys = {
 "values": [ 20, 21 ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=7]
 resource_name = "Run"
 length = 0.4
 loop = true
@@ -106,11 +106,11 @@ tracks/0/keys = {
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
-speed = 200
-jump_speed = -350
-gravity = 1200
-hard_gravity = 2000
-max_fall_speed = 700
+speed = 100
+jump_speed = -175
+gravity = 600
+hard_gravity = 1000
+max_fall_speed = 350
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
@@ -131,6 +131,6 @@ smoothing_speed = 10.0
 anims/Boost = SubResource( 2 )
 anims/Hurt = SubResource( 3 )
 anims/Idle = SubResource( 4 )
-anims/Jump = SubResource( 6 )
-anims/PickupItem = SubResource( 8 )
-anims/Run = SubResource( 10 )
+anims/Jump = SubResource( 5 )
+anims/PickupItem = SubResource( 6 )
+anims/Run = SubResource( 7 )
