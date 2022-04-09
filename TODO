@@ -1,0 +1,78 @@
+INSTANT COFFEE
+
+- Multiple levels
+
+  - Each level has a timer
+    - Timer is displayed on screen
+  - Each level has different coffee shops and butler paths
+  - Each level looks unique
+  - Levels get harders as you prgress
+  - Level selection screen.
+
+- Meg picks up coffee from shop
+
+  - Meg starts with $50
+  - A new item is added to the list of orders.
+    - UI element showing at the top of the screen with the items Meg needs to pick up.
+  - Meg needs to be able to move.
+    - Controls by WASD.
+  - Meg needs to be able to interact.
+    - Area2d that when entered shows an interact symbol.
+    - Also, only available when item is at shop, or when meg has enough money
+  - When in interactable area clicking interact button picks up the item.
+    - Picking up:
+      - Progress bar appears, indicating time to pick up item
+      - On progress complete:
+      - add the item object to Megs inventory
+      - remove price from Meg's money
+      - Inventory: 2 ui slots at the top of the screen.
+  - When near office Meg needs to be able to drop off the coffee.
+    - Meg gives a coffee to a character waiting at the office.
+      - Area2D character's area shows interact button to give coffee.
+      - Progress bar appears, showing time to drop off
+      - On progress complete:
+        - Coffee leaves Meg inventory.
+        - Update list of orders.
+        - Meg makes money
+          - Money amount is shown on screen
+        - Office character goes back in office and is replaced by another, who will have a new order
+
+- Shops periodically produce goods
+
+  - Coffee:
+    - Shops start with one coffee in their stands,
+    - Can display different amounts depending on brand.
+    - May have differing cooldowns for different coffees
+  - Pastries:
+    - Only Meg can purchase
+    - Can be used to give bonuses to Meg (speed / jump / etc)
+
+- BUTLER picks up coffee from shops.
+  - BUTLER needs to move.
+    - BUTLER spawns at office pad
+    - BUTLER follows Path2D
+      - TODO: How do Path2D work??
+    - BUTLER teleports
+      - It moves to a telporter pad and is "despawned", and "spawns" on another pad.
+        - Have to fake this with two (or more) seperate BUTLERS
+    - Liftime:
+      - Spawns
+      - Moves to location
+      - Maybe interacts with something
+      - Despawns
+      - Maybe causes a different BUTLER to spawn (might be pretending to have teleported, so will have to copy any inventory over)
+  - BUTLER picks up coffee
+    - When near shop, progress bar appears, indicating picking up coffee
+    - When picked up, the item moves from the shop, to BUTLERS head-tray
+  - BUTLER drops off coffee at office
+    - When near office character, progress bar appears, indicating dropping off coffee
+    - When dropped off, item is given to character, and BUTLER despawns
+  - BUTLER can be stunned
+    - If meg jumps on BUTLER, he is stunned
+      - Stunned animation
+      - Drops any coffee he may be holding
+      - Any progress bars are halted, and reset shortly after
+  - BUTLER can attack
+    - When butler moves around, if he bumps into MEG, she is stunned, and any progress is lost
+      - Meg has stunned animation
+      - Meg drops any coffee she may be holding

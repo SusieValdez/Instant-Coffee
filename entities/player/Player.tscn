@@ -124,6 +124,7 @@ shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+limit_top = -15000000
 smoothing_enabled = true
 smoothing_speed = 10.0
 
