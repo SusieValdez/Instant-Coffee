@@ -45,5 +45,8 @@ func _on_InteractZone_body_exited(body):
 func interact_with(body):
 	var selected_item = get_selected_item()
 	if selected_item != null:
-		body.add_item_to_inventory(selected_item.duplicate())
+		var copy = selected_item.duplicate()
+		body.add_item_to_inventory(copy)
 		selected_item.queue_free()
+		yield(get_tree().create_timer(10.0), "timeout")
+		spawn_coffee(copy.position)
