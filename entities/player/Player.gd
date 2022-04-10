@@ -10,6 +10,7 @@ export (int) var max_fall_speed
 
 var velocity = Vector2.ZERO
 var interactable = null
+var inventory = []
 
 onready var animationPlayer = $AnimationPlayer
 onready var sprite = $Sprite
@@ -57,5 +58,14 @@ func _physics_process(delta):
 func start_interacting_with(body):
 	interactable = body
 
-func stop_interacting_with(body):
+func stop_interacting_with(_body):
 	interactable = null
+
+func add_item_to_inventory(item):
+	inventory.push_back(item)
+
+func clear_inventory():
+	inventory.clear()
+
+func get_inventory_size():
+	return inventory.size()

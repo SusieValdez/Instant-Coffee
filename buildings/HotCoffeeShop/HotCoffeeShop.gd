@@ -42,7 +42,8 @@ func _on_InteractZone_body_entered(body):
 func _on_InteractZone_body_exited(body):
 	body.stop_interacting_with(self)
 
-func interact_with(_body):
+func interact_with(body):
 	var selected_item = get_selected_item()
 	if selected_item != null:
-		selected_item.queue_free() # Replace with add to inventory
+		body.add_item_to_inventory(selected_item.duplicate())
+		selected_item.queue_free()
