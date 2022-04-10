@@ -9,6 +9,7 @@ export (int) var hard_gravity
 export (int) var max_fall_speed
 
 var velocity = Vector2.ZERO
+var interactable = null
 
 onready var animationPlayer = $AnimationPlayer
 onready var sprite = $Sprite
@@ -16,6 +17,8 @@ onready var sprite = $Sprite
 func _process(_delta):
 	if Input.is_action_just_pressed("menu"):
 		get_tree().quit()
+	if Input.is_action_just_pressed("interact") and interactable != null:
+		interactable.interact_with(self)
 
 func _physics_process(delta):
 	velocity.x = 0
@@ -50,3 +53,9 @@ func _physics_process(delta):
 		animationPlayer.play("Jump")
 
 	velocity = move_and_slide(velocity, Vector2.UP)
+
+func start_interacting_with(body):
+	interactable = body
+
+func stop_interacting_with(body):
+	interactable = null
