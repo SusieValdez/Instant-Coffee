@@ -4,10 +4,11 @@ signal item_selected(item, selector)
 signal item_deselected(item, selector)
 
 onready var area = $Area2D
+onready var start_time = randf() * 100
 
 var time = 0.0
 func _process(delta):
-	offset.y = 2 * sin(time * 5)
+	offset.y = 2 * sin(start_time + time * 5)
 	time += delta
 
 func _on_Area2D_body_entered(body):
