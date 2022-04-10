@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://ui/Orders/MissingItem.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ui/Orders/Orders.gd" type="Script" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 1, 1, 0 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0.0470588, 0.0313726, 0.164706, 0 )
+corner_radius_bottom_right = 5
+anti_aliasing = false
+anti_aliasing_size = 2
+
+[node name="Orders" type="Panel"]
+margin_right = 32.0
+margin_bottom = 16.0
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="."]
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 104.0
+margin_bottom = 22.0
+grow_vertical = 0
+custom_constants/hseparation = 12
+columns = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MissingItem" parent="GridContainer" instance=ExtResource( 2 )]
+margin_right = 0.0
+margin_bottom = 0.0
+
+[editable path="GridContainer/MissingItem"]

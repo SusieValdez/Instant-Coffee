@@ -5,7 +5,6 @@ onready var animationPlayer = $AnimationPlayer
 func _ready():
 	animationPlayer.play("Idle")
 
-
 func _on_Area2D_body_entered(body):
 	if body is Player or body is BUTLER:
 		body.start_interacting_with(self)
@@ -15,5 +14,15 @@ func _on_Area2D_body_exited(body):
 		body.stop_interacting_with(self)
 
 func interact_with(body):
-	Globals.meg_score += body.get_inventory_size()
-	body.clear_inventory()
+	var num_orders_completed = 0
+	for item in body.inventory:
+		if item in Globals.orders:
+			Globals.orders.erase(item)
+			body.inventory.erase(item)
+			num_orders_completed += 1
+	Globals.meg_score += num_orders_completed
+
+func _on_NewOrderTimer_timeout():
+	Globals.orders.push_back("coffee/americano")
+	$NewOrderTimer.wait_time = rand_range(2, 10)
+	$NewOrderTimer.start()

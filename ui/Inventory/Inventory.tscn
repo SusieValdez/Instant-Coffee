@@ -1,9 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://ui/Inventory/Inventory.gd" type="Script" id=1]
 
 [sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0.137255, 0.137255, 0.137255, 1 )
+bg_color = Color( 0.137255, 0.137255, 0.137255, 0 )
 corner_radius_top_left = 1
 corner_radius_top_right = 1
 corner_radius_bottom_right = 1
@@ -11,15 +11,12 @@ corner_radius_bottom_left = 1
 anti_aliasing = false
 
 [sub_resource type="StyleBoxFlat" id=2]
-bg_color = Color( 0.619608, 0.603922, 0.603922, 1 )
-corner_radius_top_left = 1
-corner_radius_top_right = 1
-corner_radius_bottom_right = 1
-corner_radius_bottom_left = 1
-anti_aliasing = false
-
-[sub_resource type="StyleBoxFlat" id=3]
-bg_color = Color( 0.619608, 0.603922, 0.603922, 1 )
+bg_color = Color( 1, 1, 1, 1 )
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color( 0, 0, 0, 1 )
 corner_radius_top_left = 1
 corner_radius_top_right = 1
 corner_radius_bottom_right = 1
@@ -28,11 +25,12 @@ anti_aliasing = false
 
 [node name="Inventory" type="Panel"]
 anchor_left = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-margin_left = -11.3014
-margin_top = 2.61555
-margin_right = 11.6986
-margin_bottom = 14.6156
+anchor_bottom = 1.0
+margin_left = -12.5
+margin_top = -14.0
+margin_right = 12.5
 custom_styles/panel = SubResource( 1 )
 script = ExtResource( 1 )
 __meta__ = {
@@ -42,18 +40,22 @@ __meta__ = {
 [node name="ItemSlot1" type="Panel" parent="."]
 margin_left = 0.927032
 margin_top = 1.12568
-margin_right = 10.927
-margin_bottom = 11.1257
+margin_right = 12.927
+margin_bottom = 13.1257
 custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TextureRect" type="TextureRect" parent="ItemSlot1"]
-margin_left = 1.14841
-margin_top = 0.513664
-margin_right = 9.14841
-margin_bottom = 8.51366
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -5.0
+margin_top = -5.0
+margin_right = 5.0
+margin_bottom = 5.0
 expand = true
 stretch_mode = 5
 __meta__ = {
@@ -61,20 +63,26 @@ __meta__ = {
 }
 
 [node name="ItemSlot2" type="Panel" parent="."]
-margin_left = 12.1176
-margin_top = 0.794598
-margin_right = 22.1176
-margin_bottom = 10.7946
-custom_styles/panel = SubResource( 3 )
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = 14.927
+margin_top = -5.87432
+margin_right = 26.927
+margin_bottom = 6.12568
+custom_styles/panel = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TextureRect" type="TextureRect" parent="ItemSlot2"]
-margin_left = 1.17969
-margin_top = 1.32433
-margin_right = 9.17969
-margin_bottom = 9.32433
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -5.0
+margin_top = -5.0
+margin_right = 5.0
+margin_bottom = 5.0
 expand = true
 stretch_mode = 5
 __meta__ = {

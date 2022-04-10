@@ -1,8 +1,10 @@
 extends Sprite
 
-onready var Coffee = preload("res://objects/Coffee.tscn")
+onready var Item = preload("res://objects/Item.tscn")
 
 var selected_items = []
+
+export var sold_items = []
 
 func get_selected_item():
 	if selected_items.size() > 0:
@@ -22,12 +24,13 @@ func _process(_delta):
 			selected_item.set_outline_color(Color.transparent)
 
 func spawn_coffee(spawn_position: Vector2):
-	var coffee = Coffee.instance()
-	coffee.scale = Vector2(0.5, 0.5)
-	coffee.position = spawn_position
-	add_child(coffee)
-	coffee.connect("item_selected", self, "_on_item_selected")
-	coffee.connect("item_deselected", self, "_on_item_deselected")
+	var item = Item.instance()
+	item.item_name = sold_items[randi() % sold_items.size()]
+	item.scale = Vector2(0.5, 0.5)
+	item.position = spawn_position
+	add_child(item)
+	item.connect("item_selected", self, "_on_item_selected")
+	item.connect("item_deselected", self, "_on_item_deselected")
 
 func _on_item_selected(item, _selector):
 	selected_items.push_front(item)
@@ -45,8 +48,9 @@ func _on_InteractZone_body_exited(body):
 func interact_with(body):
 	var selected_item = get_selected_item()
 	if selected_item != null:
+		body.inventory.push_back(selected_item.item_name)
+		
 		var copy = selected_item.duplicate()
-		body.add_item_to_inventory(copy)
 		selected_item.queue_free()
 		yield(get_tree().create_timer(10.0), "timeout")
 		spawn_coffee(copy.position)

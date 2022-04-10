@@ -10,6 +10,7 @@ extents = Vector2( 14.1269, 5.36596 )
 position = Vector2( -0.0883942, 0 )
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
+sold_items = [ "coffee/americano", "coffee/iced" ]
 
 [node name="ItemSpawnLocations" type="Node" parent="."]
 
