@@ -2,8 +2,11 @@ extends KinematicBody2D
 
 onready var animationPlayer = $AnimationPlayer
 
+var orders = []
+
 func _ready():
 	animationPlayer.play("Idle")
+	orders = Globals.orders_by_level[get_node("..").name]
 
 func _on_Area2D_body_entered(body):
 	if body is Player or body is BUTLER:
@@ -23,6 +26,7 @@ func interact_with(body):
 	Globals.meg_score += num_orders_completed
 
 func _on_NewOrderTimer_timeout():
-	Globals.orders.push_back("coffee/americano")
+	var order = orders[randi() % orders.size()]
+	Globals.orders.push_back(order)
 	$NewOrderTimer.wait_time = rand_range(2, 10)
 	$NewOrderTimer.start()
