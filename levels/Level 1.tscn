@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/bricks/tileset_bricks.tres" type="TileSet" id=1]
 [ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://ui/Inventory/Inventory.tscn" type="PackedScene" id=7]
 [ext_resource path="res://entities/Ben/Ben.gd" type="Script" id=8]
 [ext_resource path="res://assets/tree-long.png" type="Texture" id=9]
+[ext_resource path="res://ui/Scores/Scores.tscn" type="PackedScene" id=10]
 
 [node name="Level 1" type="Node2D"]
 
@@ -47,6 +48,8 @@ position = Vector2( -40, -24 )
 [node name="HUD" type="CanvasLayer" parent="."]
 
 [node name="Inventory" parent="HUD" instance=ExtResource( 7 )]
+
+[node name="Scores" parent="HUD" instance=ExtResource( 10 )]
 
 [editable path="BUTLER"]
 [editable path="Ben"]

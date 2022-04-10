@@ -30,6 +30,10 @@ config/name="Instant Coffee"
 run/main_scene="res://levels/Level 1.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Globals="*res://autoload/Globals.gd"
+
 [display]
 
 window/size/width=300

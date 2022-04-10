@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/B.U.T.L.E.R.png" type="Texture" id=1]
+[ext_resource path="res://ui/Scores/Scores.gd" type="Script" id=2]
+
+[sub_resource type="StreamTexture" id=1]
+load_path = "res://.import/meg.png-a7ee783624d3d605acb99d36e4138929.stex"
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = SubResource( 1 )
+region = Rect2( 0.913517, 0, 13.7594, 12.0009 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 1 )
+region = Rect2( 0.913517, 0, 13.7594, 12.0009 )
+
+[node name="Scores" type="Panel"]
+margin_left = 251.438
+margin_top = 2.53178
+margin_right = 297.438
+margin_bottom = 32.5318
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 1.90634
+margin_top = 1.06356
+margin_right = 14.9063
+margin_bottom = 13.0636
+texture = SubResource( 2 )
+expand = true
+stretch_mode = 3
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+margin_left = 2.18729
+margin_top = 13.7992
+margin_right = 15.1873
+margin_bottom = 25.7992
+texture = SubResource( 3 )
+expand = true
+stretch_mode = 3
+
+[node name="MegScore" type="RichTextLabel" parent="."]
+margin_left = 15.892
+margin_top = 1.05946
+margin_right = 44.892
+margin_bottom = 16.0595
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BUTLERScore" type="RichTextLabel" parent="."]
+margin_left = 15.9064
+margin_top = 15.0466
+margin_right = 44.9064
+margin_bottom = 30.0466
+text = "0"
+__meta__ = {
+"_edit_use_anchors_": false
+}

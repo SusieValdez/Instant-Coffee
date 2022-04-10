@@ -15,4 +15,5 @@ func _on_Area2D_body_exited(body):
 		body.stop_interacting_with(self)
 
 func interact_with(body):
+	Globals.meg_score += body.get_inventory_size()
 	body.clear_inventory()
