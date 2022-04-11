@@ -11,6 +11,7 @@ export (int) var max_fall_speed
 var velocity = Vector2.ZERO
 var interactable = null
 var inventory = []
+var MAX_INVENTORY_SIZE = 2
 
 onready var animationPlayer = $AnimationPlayer
 onready var sprite = $Sprite
@@ -60,3 +61,6 @@ func start_interacting_with(body):
 
 func stop_interacting_with(_body):
 	interactable = null
+
+func can_interact_with(body):
+	return inventory.size() < MAX_INVENTORY_SIZE

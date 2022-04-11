@@ -2,8 +2,9 @@ extends Panel
 
 
 func _process(_delta):
-	var inventory = get_node("../../Player").inventory
-	for i in 2:
+	var player = get_node("../../Player")
+	var inventory = player.inventory
+	for i in player.MAX_INVENTORY_SIZE:
 		var textureRect = get_node("ItemSlot" + str(i + 1)).get_node("TextureRect")
 		textureRect.texture = null
 		if i < inventory.size():

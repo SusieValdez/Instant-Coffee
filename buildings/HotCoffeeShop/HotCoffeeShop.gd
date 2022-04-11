@@ -46,6 +46,8 @@ func _on_InteractZone_body_exited(body):
 	body.stop_interacting_with(self)
 
 func interact_with(body):
+	if not body.can_interact_with(self):
+		return # replace with UI feedback
 	var selected_item = get_selected_item()
 	if selected_item != null:
 		body.inventory.push_back(selected_item.item_name)
