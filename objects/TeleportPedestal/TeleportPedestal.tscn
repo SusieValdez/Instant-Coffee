@@ -3,6 +3,8 @@
 [ext_resource path="res://assets/teleport-pedestal.png" type="Texture" id=1]
 
 [node name="TeleportPedestal" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 0
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )

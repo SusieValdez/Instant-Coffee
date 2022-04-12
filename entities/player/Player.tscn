@@ -105,6 +105,7 @@ tracks/0/keys = {
 }
 
 [node name="Player" type="KinematicBody2D"]
+collision_mask = 31
 script = ExtResource( 2 )
 speed = 100
 jump_speed = -175

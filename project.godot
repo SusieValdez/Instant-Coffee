@@ -48,6 +48,10 @@ window/size/fullscreen=true
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
 
+[global]
+
+coll=false
+
 [importer_defaults]
 
 texture={
@@ -101,6 +105,14 @@ interact={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":69,"unicode":0,"echo":false,"script":null)
  ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="player"
+2d_physics/layer_2="ground"
+2d_physics/layer_3="enemy"
+2d_physics/layer_4="interactable"
+2d_physics/layer_5="npc"
 
 [physics]
 

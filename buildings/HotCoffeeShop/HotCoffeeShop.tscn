@@ -21,6 +21,8 @@ position = Vector2( 0, 12.5078 )
 position = Vector2( 12.1976, 12.3587 )
 
 [node name="InteractZone" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractZone"]
 position = Vector2( 6.82094, 18.4305 )
