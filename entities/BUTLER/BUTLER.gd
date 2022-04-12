@@ -3,6 +3,7 @@ extends KinematicBody2D
 class_name BUTLER
 
 onready var animation_player = $AnimationPlayer
+var interactable = null
 
 var speed = 50
 var gravity = 600
@@ -18,13 +19,13 @@ func _process(delta):
 		animation_player.play("Running")
 		var velocity = (target_position - position) * delta * speed
 		velocity.y += gravity * delta
-		move_and_slide(velocity, Vector2.UP)
+		velocity = move_and_slide(velocity, Vector2.UP)
 
 func start_interacting_with(body):
-	pass
+	interactable = body
 
-func stop_interacting_with(body):
-	pass
+func stop_interacting_with(_body):
+	interactable = null
 
-func can_interact_with(body):
+func can_interact_with(_body):
 	return true

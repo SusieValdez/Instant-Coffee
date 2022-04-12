@@ -2,7 +2,7 @@ extends Panel
 
 var MissingItem = preload("res://ui/Orders/MissingItem.tscn")
 
-func _process(delta):
+func _process(_delta):
 	for n in $GridContainer.get_children():
 		$GridContainer.remove_child(n)
 	for order in Globals.orders:

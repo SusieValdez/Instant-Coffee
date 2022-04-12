@@ -62,5 +62,5 @@ func start_interacting_with(body):
 func stop_interacting_with(_body):
 	interactable = null
 
-func can_interact_with(body):
+func can_interact_with(_body):
 	return inventory.size() < MAX_INVENTORY_SIZE
