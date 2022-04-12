@@ -119,7 +119,7 @@ vframes = 6
 frame = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0.0343628, 1.49616 )
+position = Vector2( -0.0152435, 1.39695 )
 shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]

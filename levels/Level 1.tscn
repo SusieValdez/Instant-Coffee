@@ -1,18 +1,17 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/bricks/tileset_bricks.tres" type="TileSet" id=1]
 [ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://entities/BUTLER/BUTLER.tscn" type="PackedScene" id=3]
 [ext_resource path="res://buildings/HotCoffeeShop/HotCoffeeShop.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/officeEdited.png" type="Texture" id=5]
 [ext_resource path="res://entities/Ben/Ben.tscn" type="PackedScene" id=6]
 [ext_resource path="res://ui/Inventory/Inventory.tscn" type="PackedScene" id=7]
-[ext_resource path="res://entities/Ben/Ben.gd" type="Script" id=8]
 [ext_resource path="res://assets/decorations.png" type="Texture" id=9]
 [ext_resource path="res://ui/Scores/Scores.tscn" type="PackedScene" id=10]
 [ext_resource path="res://ui/Orders/Orders.tscn" type="PackedScene" id=11]
 [ext_resource path="res://assets/subway-tiles/tileset_subway-tiles.tres" type="TileSet" id=12]
 [ext_resource path="res://objects/TeleportPedestal/TeleportPedestal.tscn" type="PackedScene" id=13]
+[ext_resource path="res://levels/Level 1.gd" type="Script" id=14]
 
 [sub_resource type="TileSet" id=1]
 0/name = "decorations.png 0"
@@ -59,6 +58,11 @@
 1/z_index = 0
 
 [node name="Level 1" type="Node2D"]
+script = ExtResource( 14 )
+
+[node name="BUTLERSpawnTimer" type="Timer" parent="."]
+one_shot = true
+autostart = true
 
 [node name="Brick" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
@@ -81,6 +85,9 @@ texture = ExtResource( 5 )
 [node name="Ben" parent="Office" instance=ExtResource( 6 )]
 position = Vector2( -1.1028, 56.7089 )
 
+[node name="BUTLERSpawnPoint" type="Node2D" parent="Office"]
+position = Vector2( 14.0379, 56.1515 )
+
 [node name="Shops" type="Node2D" parent="."]
 __meta__ = {
 "_edit_lock_": true
@@ -96,31 +103,27 @@ cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
 format = 1
 tile_data = PoolIntArray( -262134, 0, 0, -262133, 0, 0, -262130, 0, 1, -131083, 0, 2, -131078, 0, 0, -131076, 0, 0, -131074, 0, 1, -196600, 0, 1, -196599, 1, 0, -196596, 1, 0, -196595, 1, 2, -196594, 1, 3, -196590, 1, 8, -196589, 1, 5, -65548, 1, 0, -65543, 1, 4, -65541, 1, 1, -131052, 1, 7, -65536, 0, 1, -65534, 0, 0, -65530, 0, 1, 3, 1, 1, 4, 1, 0 )
 
-[node name="TeleportPedstals" type="Node2D" parent="."]
+[node name="TeleportPedestals" type="Node2D" parent="."]
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="TeleportPedestal" parent="TeleportPedstals" instance=ExtResource( 13 )]
+[node name="TeleportPedestal" parent="TeleportPedestals" instance=ExtResource( 13 )]
 position = Vector2( -40, -32 )
 
-[node name="TeleportPedestal2" parent="TeleportPedstals" instance=ExtResource( 13 )]
+[node name="TeleportPedestal2" parent="TeleportPedestals" instance=ExtResource( 13 )]
 position = Vector2( 16, 0 )
 
-[node name="TeleportPedestal3" parent="TeleportPedstals" instance=ExtResource( 13 )]
+[node name="TeleportPedestal3" parent="TeleportPedestals" instance=ExtResource( 13 )]
 position = Vector2( 96, 0 )
 
-[node name="TeleportPedestal4" parent="TeleportPedstals" instance=ExtResource( 13 )]
+[node name="TeleportPedestal4" parent="TeleportPedestals" instance=ExtResource( 13 )]
 position = Vector2( 162.5, -48 )
 
 [node name="BUTLERs" type="Node2D" parent="."]
-position = Vector2( -127.704, -24.8086 )
-
-[node name="BUTLER" parent="BUTLERs" instance=ExtResource( 3 )]
-script = ExtResource( 8 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( -112, -26.5686 )
+position = Vector2( -72.0053, -27.6281 )
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
@@ -129,5 +132,7 @@ position = Vector2( -112, -26.5686 )
 [node name="Scores" parent="HUD" instance=ExtResource( 10 )]
 
 [node name="Orders" parent="HUD" instance=ExtResource( 11 )]
+
+[connection signal="timeout" from="BUTLERSpawnTimer" to="." method="_on_BUTLERSpawnTimer_timeout"]
 
 [editable path="Office/Ben"]
