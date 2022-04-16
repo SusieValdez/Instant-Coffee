@@ -14,10 +14,10 @@ sold_items = [ "coffee/americano", "coffee/iced" ]
 
 [node name="ItemSpawnLocations" type="Node" parent="."]
 
-[node name="Node2D" type="Node2D" parent="ItemSpawnLocations"]
+[node name="1" type="Node2D" parent="ItemSpawnLocations"]
 position = Vector2( 0, 12.5078 )
 
-[node name="Node2D2" type="Node2D" parent="ItemSpawnLocations"]
+[node name="2" type="Node2D" parent="ItemSpawnLocations"]
 position = Vector2( 12.1976, 12.3587 )
 
 [node name="InteractZone" type="Area2D" parent="."]

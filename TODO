@@ -76,3 +76,17 @@ INSTANT COFFEE
     - When butler moves around, if he bumps into MEG, she is stunned, and any progress is lost
       - Meg has stunned animation
       - Meg drops any coffee she may be holding
+
+BUTLER Lifetime:
+- Level spawns BUTLERs on random time
+  - BUTLER gets given a list of commands
+    - GO Vector2
+    - TELEPORT VEctor2
+    - INTERACT
+    - DESPAWN
+  - Commands are constructed by Level
+    - Get random shop
+      - Shops own a path to themselves from the office
+    - Get path from shops
+    - Turn path into list of positions + the shop and offices positions
+    - Convert to commands

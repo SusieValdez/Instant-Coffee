@@ -25,6 +25,7 @@ func interact_with(body):
 			body.inventory.erase(item)
 			num_orders_completed += 1
 	Globals.meg_score += num_orders_completed
+	return true
 
 func _on_NewOrderTimer_timeout():
 	var order = orders[randi() % orders.size()]

@@ -90,7 +90,7 @@ texture = ExtResource( 5 )
 position = Vector2( -1.1028, 56.7089 )
 
 [node name="BUTLERSpawnPoint" type="Node2D" parent="Office"]
-position = Vector2( 14.0379, 56.1515 )
+position = Vector2( -16, 56 )
 
 [node name="Shops" type="Node2D" parent="."]
 __meta__ = {
@@ -99,6 +99,7 @@ __meta__ = {
 
 [node name="HotCoffeeShop" parent="Shops" instance=ExtResource( 4 )]
 position = Vector2( 264, -56 )
+teleporter_path = [ 1, 2, 3, 4 ]
 
 [node name="Decorations" type="TileMap" parent="."]
 tile_set = SubResource( 1 )
@@ -112,17 +113,17 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="TeleportPedestal" parent="TeleportPedestals" instance=ExtResource( 13 )]
+[node name="1" parent="TeleportPedestals" instance=ExtResource( 13 )]
 position = Vector2( -40, -32 )
 
-[node name="TeleportPedestal2" parent="TeleportPedestals" instance=ExtResource( 13 )]
+[node name="2" parent="TeleportPedestals" instance=ExtResource( 13 )]
 position = Vector2( 16, 0 )
 
-[node name="TeleportPedestal3" parent="TeleportPedestals" instance=ExtResource( 13 )]
+[node name="3" parent="TeleportPedestals" instance=ExtResource( 13 )]
 position = Vector2( 96, 0 )
 
-[node name="TeleportPedestal4" parent="TeleportPedestals" instance=ExtResource( 13 )]
-position = Vector2( 162.5, -48 )
+[node name="4" parent="TeleportPedestals" instance=ExtResource( 13 )]
+position = Vector2( 168, -48 )
 
 [node name="BUTLERs" type="Node2D" parent="."]
 

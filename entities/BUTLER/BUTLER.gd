@@ -2,24 +2,49 @@ extends KinematicBody2D
 
 class_name BUTLER
 
+var speed = 30
+var gravity = 1000
+var commands = []
+var command_index = 0
+
 onready var animation_player = $AnimationPlayer
+onready var sprite = $Sprite
+
 var interactable = null
-
-var speed = 50
-var gravity = 600
-
 var inventory = []
-var target_position: Vector2 = Vector2(0, 0)
 
 func _ready():
 	animation_player.play("Idle")
 
 func _process(delta):
-	if target_position != null:
+	var current_command = commands[command_index]
+	var command_name = current_command[0]
+	if command_name == "MOVE":
+		var target_position = current_command[1]
 		animation_player.play("Running")
-		var velocity = (target_position - position) * delta * speed
+		var velocity = (target_position - position).normalized() * speed
+		if velocity.x > 0:
+			sprite.flip_h = false
+		elif velocity.x < 0:
+			sprite.flip_h = true
 		velocity.y += gravity * delta
 		velocity = move_and_slide(velocity, Vector2.UP)
+		if abs(target_position.x - position.x) < 1:
+			command_index += 1
+		return
+	elif command_name == "TELEPORT":
+		var telport_position = current_command[1]
+		position = telport_position
+		command_index += 1
+		return
+	elif command_name == "INTERACT":
+		animation_player.play("Idle")
+		if interactable.interact_with(self):
+			command_index += 1
+		return
+	elif command_name == "DESPAWN":
+		queue_free()
+		return
 
 func start_interacting_with(body):
 	interactable = body
