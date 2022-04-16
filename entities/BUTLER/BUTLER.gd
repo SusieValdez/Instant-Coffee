@@ -33,8 +33,13 @@ func _process(delta):
 			command_index += 1
 		return
 	elif command_name == "TELEPORT":
-		var telport_position = current_command[1]
-		position = telport_position
+		var payload = current_command[1]
+		var fromPedestal = payload["from"]
+		var toPedestal = payload["to"]
+		var teleport_position = toPedestal.position
+		fromPedestal.interact_with(self)
+		toPedestal.interact_with(self)
+		position = teleport_position
 		command_index += 1
 		return
 	elif command_name == "INTERACT":

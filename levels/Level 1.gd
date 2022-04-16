@@ -11,16 +11,28 @@ func _on_BUTLERSpawnTimer_timeout():
 	var new_BUTLER = BUTLER.instance()
 	new_BUTLER.position = BUTLER_spawn_position
 	new_BUTLER.commands = [
-		["MOVE", getTelporterPosition(1)],
-		["TELEPORT", getTelporterPosition(2)],
-		["MOVE", getTelporterPosition(3)],
-		["TELEPORT", getTelporterPosition(4)],
+		["MOVE", getTelporter(1).position],
+		["TELEPORT", {
+			"from": getTelporter(1),
+			"to": getTelporter(2),
+		}],
+		["MOVE", getTelporter(3).position],
+		["TELEPORT", {
+			"from": getTelporter(3),
+			"to": getTelporter(4),
+		}],
 		["MOVE", shopPosition + itemPosition],
 		["INTERACT"],
-		["MOVE", getTelporterPosition(4)],
-		["TELEPORT", getTelporterPosition(3)],
-		["MOVE", getTelporterPosition(2)],
-		["TELEPORT", getTelporterPosition(1)],
+		["MOVE", getTelporter(4).position],
+		["TELEPORT", {
+			"from": getTelporter(4),
+			"to": getTelporter(3),
+		}],
+		["MOVE", getTelporter(2).position],
+		["TELEPORT", {
+			"from": getTelporter(2),
+			"to": getTelporter(1),
+		}],
 		["MOVE", BUTLER_spawn_position],
 		["DESPAWN"],
 	]
@@ -28,5 +40,5 @@ func _on_BUTLERSpawnTimer_timeout():
 	$BUTLERSpawnTimer.wait_time = rand_range(10, 20)
 	$BUTLERSpawnTimer.start()
 
-func getTelporterPosition(id: int):
-	return get_node("TeleportPedestals/" + str(id)).position
+func getTelporter(id: int):
+	return get_node("TeleportPedestals/" + str(id))
