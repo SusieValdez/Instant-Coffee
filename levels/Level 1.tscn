@@ -1,11 +1,13 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/bricks/tileset_bricks.tres" type="TileSet" id=1]
 [ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/background/mountain.png" type="Texture" id=3]
 [ext_resource path="res://buildings/HotCoffeeShop/HotCoffeeShop.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/officeEdited.png" type="Texture" id=5]
 [ext_resource path="res://entities/Ben/Ben.tscn" type="PackedScene" id=6]
 [ext_resource path="res://ui/Inventory/Inventory.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/background/city.png" type="Texture" id=8]
 [ext_resource path="res://assets/decorations.png" type="Texture" id=9]
 [ext_resource path="res://ui/Scores/Scores.tscn" type="PackedScene" id=10]
 [ext_resource path="res://ui/Orders/Orders.tscn" type="PackedScene" id=11]
@@ -128,7 +130,7 @@ position = Vector2( 96, 0 )
 position = Vector2( 168, -48 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( -72.0053, -27.6281 )
+position = Vector2( -40, -360 )
 
 [node name="HUD" type="CanvasLayer" parent="."]
 
@@ -137,6 +139,48 @@ position = Vector2( -72.0053, -27.6281 )
 [node name="Scores" parent="HUD" instance=ExtResource( 10 )]
 
 [node name="Orders" parent="HUD" instance=ExtResource( 11 )]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+offset = Vector2( 0, -450 )
+transform = Transform2D( 1, 0, 0, 1, 0, -450 )
+
+[node name="Mountain" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.1, 0.1 )
+motion_mirroring = Vector2( 320, 745 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/Mountain"]
+texture = ExtResource( 3 )
+centered = false
+
+[node name="City2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.3, 0.3 )
+motion_offset = Vector2( 100, 50 )
+motion_mirroring = Vector2( 256, 596 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/City2"]
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 8 )
+centered = false
+
+[node name="City3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.4, 0.4 )
+motion_offset = Vector2( -100, 25 )
+motion_mirroring = Vector2( 288, 670 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/City3"]
+modulate = Color( 0.823529, 0.823529, 0.823529, 1 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 8 )
+centered = false
+
+[node name="City" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.5, 0.5 )
+motion_mirroring = Vector2( 320, 745 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/City"]
+modulate = Color( 0.67451, 0.67451, 0.67451, 1 )
+texture = ExtResource( 8 )
+centered = false
 
 [connection signal="timeout" from="BUTLERSpawnTimer" to="." method="_on_BUTLERSpawnTimer_timeout"]
 
