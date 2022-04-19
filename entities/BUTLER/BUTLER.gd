@@ -13,43 +13,53 @@ onready var sprite = $Sprite
 var interactable = null
 var inventory = []
 
+enum {
+	MOVING,
+	STUNNED,
+}
+
+var state = MOVING
+
 func _ready():
 	animation_player.play("Idle")
 
 func _process(delta):
-	var current_command = commands[command_index]
-	var command_name = current_command[0]
-	if command_name == "MOVE":
-		var target_position = current_command[1]
-		animation_player.play("Running")
-		var velocity = (target_position - position).normalized() * speed
-		if velocity.x > 0:
-			sprite.flip_h = false
-		elif velocity.x < 0:
-			sprite.flip_h = true
-		velocity.y += gravity * delta
-		velocity = move_and_slide(velocity, Vector2.UP)
-		if abs(target_position.x - position.x) < 1:
+	if state == MOVING:
+		var current_command = commands[command_index]
+		var command_name = current_command[0]
+		if command_name == "MOVE":
+			var target_position = current_command[1]
+			animation_player.play("Running")
+			var velocity = (target_position - position).normalized() * speed
+			if velocity.x > 0:
+				sprite.flip_h = false
+			elif velocity.x < 0:
+				sprite.flip_h = true
+			velocity.y += gravity * delta
+			velocity = move_and_slide(velocity, Vector2.UP)
+			if abs(target_position.x - position.x) < 1:
+				command_index += 1
+			return
+		elif command_name == "TELEPORT":
+			var payload = current_command[1]
+			var fromPedestal = payload["from"]
+			var toPedestal = payload["to"]
+			var teleport_position = toPedestal.position
+			fromPedestal.interact_with(self)
+			toPedestal.interact_with(self)
+			position = teleport_position
 			command_index += 1
-		return
-	elif command_name == "TELEPORT":
-		var payload = current_command[1]
-		var fromPedestal = payload["from"]
-		var toPedestal = payload["to"]
-		var teleport_position = toPedestal.position
-		fromPedestal.interact_with(self)
-		toPedestal.interact_with(self)
-		position = teleport_position
-		command_index += 1
-		return
-	elif command_name == "INTERACT":
-		animation_player.play("Idle")
-		if interactable.interact_with(self):
-			command_index += 1
-		return
-	elif command_name == "DESPAWN":
-		queue_free()
-		return
+			return
+		elif command_name == "INTERACT":
+			animation_player.play("Idle")
+			if interactable.interact_with(self):
+				command_index += 1
+			return
+		elif command_name == "DESPAWN":
+			queue_free()
+			return
+	elif state == STUNNED:
+		pass
 
 func start_interacting_with(body):
 	interactable = body
@@ -59,3 +69,11 @@ func stop_interacting_with(_body):
 
 func can_interact_with(_body):
 	return true
+
+func _on_Hurtbox_area_entered(_area):
+	state = STUNNED
+	animation_player.play("Stunned")
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "Stunned":
+		state = MOVING

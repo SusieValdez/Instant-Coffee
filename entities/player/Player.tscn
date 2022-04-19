@@ -1,11 +1,13 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/meg.png" type="Texture" id=1]
 [ext_resource path="res://entities/player/Player.gd" type="Script" id=2]
+[ext_resource path="res://hurtbox/Hitbox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://hurtbox/Hurtbox.tscn" type="PackedScene" id=4]
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 4.34581
-height = 4.47397
+[sub_resource type="CapsuleShape2D" id=10]
+radius = 5.37369
+height = 2.43866
 
 [sub_resource type="Animation" id=2]
 resource_name = "Boost"
@@ -25,7 +27,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=3]
 resource_name = "Hurt"
-length = 0.2
+length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -37,6 +39,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ 0, 8 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:collision_mask")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 27, 31 ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -104,6 +118,12 @@ tracks/0/keys = {
 "values": [ 12, 13, 14, 15 ]
 }
 
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 7.10515, 5.18401 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 0.805138, 0.570618 )
+
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 31
 script = ExtResource( 2 )
@@ -117,11 +137,11 @@ max_fall_speed = 350
 texture = ExtResource( 1 )
 hframes = 4
 vframes = 6
-frame = 12
+frame = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -0.0152435, 1.39695 )
-shape = SubResource( 1 )
+position = Vector2( -0.0152435, 1.44656 )
+shape = SubResource( 10 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -136,3 +156,22 @@ anims/Idle = SubResource( 4 )
 anims/Jump = SubResource( 5 )
 anims/PickupItem = SubResource( 6 )
 anims/Run = SubResource( 7 )
+
+[node name="Hurtbox" parent="." instance=ExtResource( 4 )]
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2( 0, 1.68662 )
+shape = SubResource( 9 )
+
+[node name="Hitbox" parent="." instance=ExtResource( 3 )]
+collision_mask = 128
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+position = Vector2( 0, 7.68899 )
+shape = SubResource( 8 )
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
+
+[editable path="Hurtbox"]
+[editable path="Hitbox"]
