@@ -14,6 +14,7 @@ var inventory = []
 var MAX_INVENTORY_SIZE = 2
 
 onready var animationPlayer = $AnimationPlayer
+onready var blinkAnimation = $BlinkAnimationPlayer
 onready var sprite = $Sprite
 
 enum {
@@ -83,4 +84,5 @@ func _on_Hurtbox_area_entered(_area):
 	animationPlayer.play("Hurt")
 
 func _on_AnimationPlayer_animation_finished(anim_name):
-	state = MOVING
+	if anim_name == "Hurt":
+		state = MOVING
