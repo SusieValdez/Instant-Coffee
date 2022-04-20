@@ -7,6 +7,6 @@ var orders: Array = []
 var orders_by_level = {
 	"Level 1": [
 		"coffee/americano",
-		"coffee/iced"
+		"coffee/espresso"
 	]
 }
