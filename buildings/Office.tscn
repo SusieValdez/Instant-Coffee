@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://entities/Ben/Ben.tscn" type="PackedScene" id=1]
+[ext_resource path="res://entities/Ben/Ben.gd" type="Script" id=2]
+[ext_resource path="res://assets/officeEdited.png" type="Texture" id=3]
+
+[node name="Office" type="Sprite"]
+position = Vector2( -128, -80 )
+texture = ExtResource( 3 )
+
+[node name="Ben" type="KinematicBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( -1.1028, 56.7089 )
+collision_layer = 16
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="BUTLERSpawnPoint" type="Node2D" parent="."]
+position = Vector2( -16, 56 )

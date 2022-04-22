@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tileset_bricks.png-7766648a6b89e6b2f336b7e2517d8190.stex"
+path="res://.import/ground-tileset.png-efaea0bf26c404225de1f449e88149fb.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/bricks/tileset_bricks.png"
-dest_files=[ "res://.import/tileset_bricks.png-7766648a6b89e6b2f336b7e2517d8190.stex" ]
+source_file="res://assets/ground-tileset.png"
+dest_files=[ "res://.import/ground-tileset.png-efaea0bf26c404225de1f449e88149fb.stex" ]
 
 [params]
 
@@ -30,5 +30,5 @@ process/HDR_as_SRGB=false
 process/invert_color=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

@@ -11,31 +11,34 @@ func _on_BUTLERSpawnTimer_timeout():
 	var new_BUTLER = BUTLER.instance()
 	new_BUTLER.position = BUTLER_spawn_position
 	new_BUTLER.commands = [
-		["MOVE", getTelporter(1).position],
-		["TELEPORT", {
-			"from": getTelporter(1),
-			"to": getTelporter(2),
-		}],
-		["MOVE", getTelporter(3).position],
-		["TELEPORT", {
-			"from": getTelporter(3),
-			"to": getTelporter(4),
-		}],
-		["MOVE", shopPosition + itemPosition],
-		["INTERACT"],
-		["MOVE", getTelporter(4).position],
-		["TELEPORT", {
-			"from": getTelporter(4),
-			"to": getTelporter(3),
-		}],
-		["MOVE", getTelporter(2).position],
-		["TELEPORT", {
-			"from": getTelporter(2),
-			"to": getTelporter(1),
-		}],
-		["MOVE", BUTLER_spawn_position],
-		["DESPAWN"],
+		"INTERACT"
 	]
+	#[
+	#	["MOVE", getTelporter(1).position],
+	#	["TELEPORT", {
+	#		"from": getTelporter(1),
+	#		"to": getTelporter(2),
+	#	}],
+	#	["MOVE", getTelporter(3).position],
+	#	["TELEPORT", {
+	#		"from": getTelporter(3),
+	#		"to": getTelporter(4),
+	#	}],
+	#	["MOVE", shopPosition + itemPosition],
+	#	["INTERACT"],
+	#	["MOVE", getTelporter(4).position],
+	#	["TELEPORT", {
+	#		"from": getTelporter(4),
+	#		"to": getTelporter(3),
+	#	}],
+	#	["MOVE", getTelporter(2).position],
+	#	["TELEPORT", {
+	#		"from": getTelporter(2),
+	#		"to": getTelporter(1),
+	#	}],
+	#	["MOVE", BUTLER_spawn_position],
+	#	["DESPAWN"],
+	#]
 	BUTLER_list.add_child(new_BUTLER)
 	$BUTLERSpawnTimer.wait_time = rand_range(10, 20)
 	$BUTLERSpawnTimer.start()
