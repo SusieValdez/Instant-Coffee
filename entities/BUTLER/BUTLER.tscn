@@ -117,7 +117,7 @@ tracks/1/keys = {
 extents = Vector2( 7.00109, 0.684128 )
 
 [sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 8.38024, 5.87 )
+extents = Vector2( 7.06, 5.87 )
 
 [node name="BUTLER" type="KinematicBody2D"]
 collision_layer = 4
@@ -128,9 +128,11 @@ script = ExtResource( 2 )
 texture = ExtResource( 1 )
 hframes = 4
 vframes = 6
+frame = 12
 
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
-position = Vector2( -0.0701523, 1.19262 )
+position = Vector2( -0.0298849, 1.19262 )
+scale = Vector2( 0.970039, 1 )
 polygon = PoolVector2Array( -0.875589, 6.74261, 1.05906, 6.79222, 7.01181, 3.27018, 6.9622, -5.11329, 8.63132, -6.42232, 7.08452, -6.35602, -6.97716, -6.30384, -8.42403, -6.28815, -7.07637, -5.16289, -6.97716, 3.96466 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

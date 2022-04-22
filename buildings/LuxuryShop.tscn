@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/shops/cute-coffee-shop.png" type="Texture" id=1]
+[ext_resource path="res://buildings/Shop.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 14.1269, 8 )
+
+[node name="LuxuryShop" type="Sprite"]
+position = Vector2( -0.0883942, 0 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+sold_items = [ "coffee/oatmilk-lavender-latte-cold", "coffee/oatmilk-lavender-latte-hot" ]
+
+[node name="ItemSpawnLocations" type="Node" parent="."]
+
+[node name="1" type="Node2D" parent="ItemSpawnLocations"]
+position = Vector2( -0.0883942, 8 )
+
+[node name="2" type="Node2D" parent="ItemSpawnLocations"]
+position = Vector2( 16, 8 )
+
+[node name="InteractZone" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractZone"]
+position = Vector2( 8.35326, 15.4703 )
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="InteractZone" to="." method="_on_InteractZone_body_entered"]
+[connection signal="body_exited" from="InteractZone" to="." method="_on_InteractZone_body_exited"]

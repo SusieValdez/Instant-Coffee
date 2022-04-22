@@ -1,15 +1,20 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/ground.tres" type="TileSet" id=1]
 [ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/background/mountain.png" type="Texture" id=3]
 [ext_resource path="res://buildings/Office.tscn" type="PackedScene" id=4]
+[ext_resource path="res://buildings/HotCoffeeShop.tscn" type="PackedScene" id=5]
+[ext_resource path="res://buildings/IcedCoffeeShop.tscn" type="PackedScene" id=6]
 [ext_resource path="res://ui/Inventory/Inventory.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/background/city.png" type="Texture" id=8]
 [ext_resource path="res://assets/decorations.png" type="Texture" id=9]
 [ext_resource path="res://ui/Scores/Scores.tscn" type="PackedScene" id=10]
 [ext_resource path="res://ui/Orders/Orders.tscn" type="PackedScene" id=11]
+[ext_resource path="res://buildings/LuxuryShop.tscn" type="PackedScene" id=12]
+[ext_resource path="res://buildings/FancyShop.tscn" type="PackedScene" id=13]
 [ext_resource path="res://levels/Level 1.gd" type="Script" id=14]
+[ext_resource path="res://buildings/TeaShop.tscn" type="PackedScene" id=15]
 
 [sub_resource type="TileSet" id=1]
 0/name = "decorations.png 0"
@@ -79,6 +84,21 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="HotCoffeeShop" parent="Shops" instance=ExtResource( 6 )]
+position = Vector2( -80, -40 )
+
+[node name="IcedCoffeeShop" parent="Shops" instance=ExtResource( 5 )]
+position = Vector2( 335.912, -40 )
+
+[node name="LuxuryShop" parent="Shops" instance=ExtResource( 12 )]
+position = Vector2( 12.1976, -40 )
+
+[node name="FancyShop" parent="Shops" instance=ExtResource( 13 )]
+position = Vector2( 251.438, -40 )
+
+[node name="TeaShop" parent="Shops" instance=ExtResource( 15 )]
+position = Vector2( -168, -40 )
+
 [node name="Decorations" type="TileMap" parent="."]
 tile_set = SubResource( 1 )
 cell_size = Vector2( 16, 16 )
@@ -132,6 +152,7 @@ motion_mirroring = Vector2( 288, 670 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/City3"]
 modulate = Color( 0.823529, 0.823529, 0.823529, 1 )
+position = Vector2( -0.0883942, 2 )
 scale = Vector2( 0.9, 0.9 )
 texture = ExtResource( 8 )
 centered = false

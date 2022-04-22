@@ -13,8 +13,8 @@ func get_selected_item():
 	return null
 
 func _ready():
-	spawn_coffee(get_node("ItemSpawnLocations/1").position)
-	spawn_coffee(get_node("ItemSpawnLocations/2").position)
+	for child in get_node("ItemSpawnLocations").get_children():
+		spawn_coffee(child.position)
 
 func _process(_delta):
 	for i in selected_items.size():
