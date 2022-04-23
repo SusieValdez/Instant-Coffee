@@ -33,21 +33,20 @@ func _on_BUTLERSpawnTimer_timeout():
 			}])
 	new_BUTLER.commands.append(["MOVE", shopPosition + itemPosition])
 	new_BUTLER.commands.append(["INTERACT"])
-	for _i in shop.teleporter_path.size():
-		var i = shop.teleporter_path.size() - 1 - _i
+	for i in range(shop.teleporter_path.size() - 1, -1, -1):
 		var teleporter_id = shop.teleporter_path[i]
-		if i % 2 == 0:
+		if i % 2 == 1:
 			new_BUTLER.commands.append(["MOVE", getTelporter(teleporter_id).position])
 		else:
-			var next_teleporter_id = shop.teleporter_path[i - 1]
+			var previous_teleporter_id = shop.teleporter_path[i + 1]
 			new_BUTLER.commands.append(["TELEPORT", {
-				"from": getTelporter(teleporter_id),
-				"to": getTelporter(next_teleporter_id),
+				"from": getTelporter(previous_teleporter_id),
+				"to": getTelporter(teleporter_id),
 			}])
 	new_BUTLER.commands.append(["MOVE", BUTLER_spawn_position])
 	new_BUTLER.commands.append(["DESPAWN"])
 	BUTLER_list.add_child(new_BUTLER)
-	$BUTLERSpawnTimer.wait_time = rand_range(2, 8)
+	$BUTLERSpawnTimer.wait_time = rand_range(10, 20)
 	$BUTLERSpawnTimer.start()
 
 func getTelporter(id: int):

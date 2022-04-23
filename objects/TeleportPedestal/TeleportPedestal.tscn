@@ -64,7 +64,7 @@ hframes = 9
 frame = 7
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( 17.5711, 15.9432, 12.8886, 11.1863, -12.828, 10.9633, -16.9159, 15.9432 )
+polygon = PoolVector2Array( 15.8668, 15.9145, 9.34168, 11.2655, -9.83218, 11.2502, -15.8318, 15.774 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Idle = SubResource( 1 )
