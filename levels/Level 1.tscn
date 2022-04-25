@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://assets/ground.tres" type="TileSet" id=1]
 [ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://buildings/TeaShop.tscn" type="PackedScene" id=15]
 [ext_resource path="res://buildings/IcedCoffeeShop.tscn" type="PackedScene" id=16]
 [ext_resource path="res://buildings/SeasonalShop.tscn" type="PackedScene" id=17]
+[ext_resource path="res://assets/audio/music.mp3" type="AudioStream" id=18]
 
 [sub_resource type="TileSet" id=1]
 0/name = "decorations.png 0"
@@ -252,5 +253,9 @@ centered = false
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 18 )
+autoplay = true
 
 [connection signal="timeout" from="BUTLERSpawnTimer" to="." method="_on_BUTLERSpawnTimer_timeout"]

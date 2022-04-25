@@ -69,3 +69,6 @@ polygon = PoolVector2Array( 15.8668, 15.9145, 9.34168, 11.2655, -9.83218, 11.250
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Idle = SubResource( 1 )
 anims/Teleport = SubResource( 2 )
+
+[node name="TeleportSoundPlayer" type="AudioStreamPlayer2D" parent="."]
+max_distance = 300.0

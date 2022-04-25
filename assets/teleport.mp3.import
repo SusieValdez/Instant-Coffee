@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/teleport.mp3-92a8bc4e46a178a0636a99732228b457.mp3str"
+
+[deps]
+
+source_file="res://assets/teleport.mp3"
+dest_files=[ "res://.import/teleport.mp3-92a8bc4e46a178a0636a99732228b457.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

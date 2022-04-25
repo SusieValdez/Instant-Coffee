@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/2.wav-dc11c9f554ab02125748186cacd8cc31.sample"
+
+[deps]
+
+source_file="res://assets/audio/robot-stun-sounds/2.wav"
+dest_files=[ "res://.import/2.wav-dc11c9f554ab02125748186cacd8cc31.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

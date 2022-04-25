@@ -53,7 +53,11 @@ func interact_with(body):
 	var selected_item = get_selected_item()
 	if selected_item == null:
 		return false
+	selected_item.visible = false
 	body.inventory.push_back(selected_item.item_name)
+	selected_item.pickup_sound_player.stream = Globals.get_sfx('pickup')
+	selected_item.pickup_sound_player.play()
+	yield(selected_item.pickup_sound_player, 'finished')
 
 	var copy = selected_item.duplicate()
 	selected_item.queue_free()

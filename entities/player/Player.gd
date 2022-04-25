@@ -38,6 +38,8 @@ func _physics_process(delta):
 			velocity.x = -speed
 		if is_on_floor() and Input.is_action_pressed("jump"):
 			velocity.y += jump_speed
+			$JumpSoundPlayer.stream = Globals.get_sfx("jump")
+			$JumpSoundPlayer.play()
 		
 		# If released jump before max jump height, start falling
 		if velocity.y < 0 and not is_on_floor() and Input.is_action_just_released("jump"):
@@ -89,6 +91,8 @@ func can_interact_with(_body):
 func _on_Hurtbox_area_entered(_area):
 	state = STUNNED
 	animationPlayer.play("Hurt")
+	$HurtSoundPlayer.stream = Globals.get_sfx("hurt")
+	$HurtSoundPlayer.play()
 	yield(animationPlayer, "animation_finished")
 	inventory.clear()
 	animationPlayer.play("RESET")

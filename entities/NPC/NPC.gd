@@ -26,6 +26,8 @@ func interact_with(body):
 			body.inventory.erase(item)
 			Globals.meg_score += 1
 			num_orders -= 1
+			$GiveCoffeeSoundPlayer.stream = Globals.get_sfx('pickup')
+			$GiveCoffeeSoundPlayer.play()
 	if num_orders == 0:
 		emit_signal("orders_completed")
 	return false

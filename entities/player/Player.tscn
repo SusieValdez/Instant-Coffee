@@ -220,7 +220,7 @@ tracks/0/keys = {
 "values": [ 20, 21 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=12]
 resource_name = "RESET"
 length = 0.001
 tracks/0/type = "value"
@@ -355,8 +355,20 @@ tracks/10/keys = {
 "update": 0,
 "values": [ Vector2( 3, 3 ) ]
 }
+tracks/11/type = "value"
+tracks/11/path = NodePath(".:collision_mask")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 31 ]
+}
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=13]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -372,14 +384,14 @@ tracks/0/keys = {
 "values": [ 12, 13, 14, 15 ]
 }
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=14]
 extents = Vector2( 5.80432, 5.86076 )
 
 [sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 0.805138, 0.570618 )
 
 [node name="Player" type="KinematicBody2D"]
-collision_mask = 27
+collision_mask = 31
 script = ExtResource( 2 )
 speed = 100
 jump_speed = -190
@@ -392,7 +404,6 @@ material = SubResource( 1 )
 texture = ExtResource( 1 )
 hframes = 4
 vframes = 6
-frame = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -0.0152435, 1.44656 )
@@ -410,14 +421,14 @@ anims/Hurt = SubResource( 4 )
 anims/Idle = SubResource( 5 )
 anims/Jump = SubResource( 6 )
 anims/PickupItem = SubResource( 7 )
-anims/RESET = SubResource( 8 )
-anims/Run = SubResource( 9 )
+anims/RESET = SubResource( 12 )
+anims/Run = SubResource( 13 )
 
 [node name="Hurtbox" parent="." instance=ExtResource( 4 )]
 
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2( 0, 1.68662 )
-shape = SubResource( 10 )
+shape = SubResource( 14 )
 
 [node name="Hitbox" parent="." instance=ExtResource( 3 )]
 collision_mask = 128
@@ -443,6 +454,11 @@ texture = ExtResource( 7 )
 position = Vector2( 35, -60 )
 scale = Vector2( 3, 3 )
 texture = ExtResource( 8 )
+
+[node name="JumpSoundPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -12.866
+
+[node name="HurtSoundPlayer" type="AudioStreamPlayer" parent="."]
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 

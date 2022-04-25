@@ -7,6 +7,7 @@ var item_name = ""
 
 onready var area = $Area2D
 onready var start_time = randf() * 100
+onready var pickup_sound_player = $PickupSoundPlayer
 
 func _ready():
 	texture = load("res://assets/items/" + item_name + ".png")

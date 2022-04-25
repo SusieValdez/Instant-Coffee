@@ -74,6 +74,8 @@ func can_interact_with(_body):
 func _on_Hurtbox_area_entered(_area):
 	state = STUNNED
 	animation_player.play("Stunned")
+	$StunSoundPlayer.stream = Globals.get_sfx("robot-stun")
+	$StunSoundPlayer.play()
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "Stunned":
