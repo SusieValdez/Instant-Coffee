@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/shops/seasonal-shop.png" type="Texture" id=1]
+[ext_resource path="res://buildings/Shop.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 17.8985, 5.36596 )
+
+[node name="SeasonalShop" type="Sprite"]
+position = Vector2( -0.0883942, 0 )
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+sold_items = [ "coffee/pumpkin-latte", "coffee/hot-chocolate" ]
+
+[node name="ItemSpawnLocations" type="Node" parent="."]
+
+[node name="1" type="Node2D" parent="ItemSpawnLocations"]
+position = Vector2( -4.1993, 11.5355 )
+
+[node name="2" type="Node2D" parent="ItemSpawnLocations"]
+position = Vector2( 18.0312, 11.0329 )
+
+[node name="3" type="Node2D" parent="ItemSpawnLocations"]
+position = Vector2( 7.07107, 11.4748 )
+
+[node name="InteractZone" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractZone"]
+position = Vector2( 6.82094, 18.4305 )
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="InteractZone" to="." method="_on_InteractZone_body_entered"]
+[connection signal="body_exited" from="InteractZone" to="." method="_on_InteractZone_body_exited"]

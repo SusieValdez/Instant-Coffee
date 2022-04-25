@@ -56,6 +56,7 @@ func _process(delta):
 				command_index += 1
 			return
 		elif command_name == "DESPAWN":
+			Globals.butler_score += 1
 			queue_free()
 			return
 	elif state == STUNNED:

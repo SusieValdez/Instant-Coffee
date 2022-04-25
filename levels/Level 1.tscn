@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://assets/ground.tres" type="TileSet" id=1]
 [ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://levels/Level 1.gd" type="Script" id=14]
 [ext_resource path="res://buildings/TeaShop.tscn" type="PackedScene" id=15]
 [ext_resource path="res://buildings/IcedCoffeeShop.tscn" type="PackedScene" id=16]
+[ext_resource path="res://buildings/SeasonalShop.tscn" type="PackedScene" id=17]
 
 [sub_resource type="TileSet" id=1]
 0/name = "decorations.png 0"
@@ -103,10 +104,6 @@ teleporter_path = [ 1, 2 ]
 position = Vector2( 920, -232 )
 teleporter_path = [ 1, 2, 3, 4, 5, 6 ]
 
-[node name="IcedCoffeeShop2" parent="Shops" instance=ExtResource( 16 )]
-position = Vector2( 672, -56 )
-teleporter_path = [ 1, 2, 3, 4 ]
-
 [node name="LuxuryShop2" parent="Shops" instance=ExtResource( 12 )]
 position = Vector2( -624, 40 )
 teleporter_path = [ 7, 8, 9, 10, 11, 12 ]
@@ -123,12 +120,16 @@ teleporter_path = [ 7, 8, 9, 10 ]
 position = Vector2( 496, -24 )
 teleporter_path = [ 1, 2 ]
 
+[node name="SeasonalShop" parent="Shops" instance=ExtResource( 17 )]
+position = Vector2( 671.912, -56 )
+teleporter_path = [ 1, 2, 3, 4 ]
+
 [node name="Decorations" type="TileMap" parent="."]
 tile_set = SubResource( 1 )
 cell_size = Vector2( 16, 16 )
 cell_custom_transform = Transform2D( 16, 0, 0, 16, 0, 0 )
 format = 1
-tile_data = PoolIntArray( -982987, 0, 2, -982981, 0, 1, -262107, 0, 2, -262100, 0, 0, -262098, 0, 2, -131076, 0, 0, -131075, 0, 1, -196605, 0, 2, -196604, 0, 0, -196603, 0, 1, -196597, 0, 1, -196596, 0, 0, -196594, 0, 1, -196590, 0, 0, -196589, 0, 2, -196570, 1, 2, -196569, 1, 3, -196568, 1, 6, -196565, 1, 0, -65539, 1, 6, -65538, 1, 5, -131069, 1, 2, -131068, 1, 3, -131066, 1, 4, -131062, 1, 5, -131060, 1, 2, -131059, 1, 3, -131051, 0, 2, -131038, 0, 2, -16, 0, 0, -15, 0, 2, -14, 0, 1, -8, 0, 2, -6, 1, 7, -65514, 1, 7, -65513, 1, 1, -65512, 1, 7, -65509, 1, 8, -65508, 1, 5, -65507, 1, 0, -65505, 1, 7, -65504, 1, 0, -65503, 1, 7, -65502, 1, 6, 65512, 0, 0, 65516, 0, 0, 65517, 0, 1, 65518, 0, 2, 65519, 0, 0, 65522, 1, 6, 65523, 1, 8, 65528, 1, 6, 65529, 1, 0, 131047, 1, 0, 131048, 1, 6, 131052, 1, 6, 131053, 1, 6, 131054, 1, 0, 131055, 1, 6, 196563, 0, 0, 196565, 0, 0, 196573, 0, 0, 196574, 0, 1, 196578, 0, 1, 196579, 0, 2, 196580, 0, 0, 196581, 0, 0, 262100, 1, 5, 262102, 1, 0, 262107, 1, 0, 262108, 1, 2, 262109, 1, 3, 262111, 1, 0, 262115, 1, 0, 262118, 1, 0 )
+tile_data = PoolIntArray( -982987, 0, 2, -982981, 0, 1, -262107, 0, 2, -262100, 0, 0, -262098, 0, 2, -131076, 0, 0, -131075, 0, 1, -196605, 0, 2, -196604, 0, 0, -196603, 0, 1, -196597, 0, 1, -196596, 0, 0, -196594, 0, 1, -196590, 0, 0, -196589, 0, 2, -196570, 1, 2, -196569, 1, 3, -196568, 1, 6, -65539, 1, 6, -65538, 1, 5, -131069, 1, 2, -131068, 1, 3, -131066, 1, 4, -131062, 1, 5, -131060, 1, 2, -131059, 1, 3, -131051, 0, 2, -131038, 0, 2, -16, 0, 0, -15, 0, 2, -14, 0, 1, -8, 0, 2, -6, 1, 7, -65514, 1, 7, -65513, 1, 1, -65512, 1, 7, -65509, 1, 8, -65508, 1, 5, -65507, 1, 0, -65504, 1, 0, -65503, 1, 7, -65502, 1, 6, 65512, 0, 0, 65516, 0, 0, 65517, 0, 1, 65518, 0, 2, 65519, 0, 0, 65522, 1, 6, 65523, 1, 8, 65528, 1, 6, 65529, 1, 0, 131047, 1, 0, 131048, 1, 6, 131052, 1, 6, 131053, 1, 6, 131054, 1, 0, 131055, 1, 6, 196563, 0, 0, 196565, 0, 0, 196573, 0, 0, 196574, 0, 1, 196578, 0, 1, 196579, 0, 2, 196580, 0, 0, 196581, 0, 0, 262100, 1, 5, 262102, 1, 0, 262107, 1, 0, 262108, 1, 2, 262109, 1, 3, 262111, 1, 0, 262115, 1, 0, 262118, 1, 0 )
 
 [node name="BUTLERs" type="Node2D" parent="."]
 

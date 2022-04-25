@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 onready var animationPlayer = $AnimationPlayer
+onready var sprite = $Sprite
 onready var level = get_node("../..")
 
 var orders = []
@@ -30,5 +31,5 @@ func interact_with(body):
 func _on_NewOrderTimer_timeout():
 	var order = orders[randi() % orders.size()]
 	Globals.orders.push_back(order)
-	$NewOrderTimer.wait_time = rand_range(2, 10)
+	$NewOrderTimer.wait_time = rand_range(8, 10)
 	$NewOrderTimer.start()

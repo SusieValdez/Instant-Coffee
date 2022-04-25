@@ -6,22 +6,22 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 19.8007, 5.36596 )
 
-[node name="IcedCoffeeShop" type="Sprite"]
+[node name="SeasonalShop" type="Sprite"]
 position = Vector2( -0.0883942, 0 )
 texture = ExtResource( 1 )
 script = ExtResource( 2 )
-sold_items = [ "coffee/affogato", "coffee/cold-brew" ]
+sold_items = [ "coffee/cold-brew", "coffee/affogato" ]
 
 [node name="ItemSpawnLocations" type="Node" parent="."]
 
 [node name="1" type="Node2D" parent="ItemSpawnLocations"]
-position = Vector2( 0, 12.5078 )
+position = Vector2( -0.121174, 11.7288 )
 
 [node name="2" type="Node2D" parent="ItemSpawnLocations"]
-position = Vector2( 12.1976, 12.3587 )
+position = Vector2( 13.0214, 11.5648 )
 
 [node name="3" type="Node2D" parent="ItemSpawnLocations"]
-position = Vector2( -9.90242, 12.4523 )
+position = Vector2( -13.9311, 12.033 )
 
 [node name="InteractZone" type="Area2D" parent="."]
 collision_layer = 8

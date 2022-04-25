@@ -33,7 +33,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Instant Coffee"
-run/main_scene="res://levels/Level 1.tscn"
+run/main_scene="res://ui/Menu.tscn"
 config/icon="res://icon.png"
 
 [autoload]

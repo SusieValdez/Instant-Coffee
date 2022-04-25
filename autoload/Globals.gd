@@ -1,6 +1,7 @@
 extends Node
 
 var meg_score = 0
+var butler_score = 0
 
 var orders: Array = []
 
@@ -16,5 +17,7 @@ var orders_by_level = {
 		"coffee/cappuccino",
 		"coffee/hot-tea",
 		"coffee/iced-tea",
+		"coffee/pumpkin-latte",
+		"coffee/hot-chocolate",
 	]
 }

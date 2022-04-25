@@ -72,9 +72,11 @@ func _physics_process(delta):
 
 func start_interacting_with(body):
 	interactable = body
+	$InteractIcon.visible = true
 
 func stop_interacting_with(_body):
 	interactable = null
+	$InteractIcon.visible = false
 
 func can_interact_with(_body):
 	return inventory.size() < MAX_INVENTORY_SIZE
