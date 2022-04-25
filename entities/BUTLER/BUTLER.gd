@@ -24,6 +24,10 @@ func _ready():
 	animation_player.play("Idle")
 
 func _process(delta):
+	if inventory.size() > 0:
+		$Item.texture = load("res://assets/items/" + inventory[0] + ".png")
+	else:
+		$Item.texture = null
 	if state == MOVING:
 		var current_command = commands[command_index]
 		var command_name = current_command[0]

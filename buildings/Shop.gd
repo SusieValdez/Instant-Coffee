@@ -51,8 +51,9 @@ func interact_with(body):
 	if not body.can_interact_with(self):
 		return false # TODO: replace with UI feedback
 	var selected_item = get_selected_item()
-	if selected_item == null:
+	if selected_item == null or not selected_item.can_select:
 		return false
+	selected_item.can_select = false
 	selected_item.visible = false
 	body.inventory.push_back(selected_item.item_name)
 	selected_item.pickup_sound_player.stream = Globals.get_sfx('pickup')

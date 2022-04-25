@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/B.U.T.L.E.R.png" type="Texture" id=1]
 [ext_resource path="res://entities/BUTLER/BUTLER.gd" type="Script" id=2]
 [ext_resource path="res://hurtbox/Hurtbox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://hurtbox/Hitbox.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/hit-effect.png" type="Texture" id=5]
+[ext_resource path="res://assets/items/coffee/americano.png" type="Texture" id=6]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 6.46898
@@ -163,7 +164,11 @@ script = ExtResource( 2 )
 texture = ExtResource( 1 )
 hframes = 4
 vframes = 6
-frame = 8
+
+[node name="Item" type="Sprite" parent="."]
+position = Vector2( 0.445448, -9.4658 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
 
 [node name="hit-effect" type="Sprite" parent="."]
 visible = false
