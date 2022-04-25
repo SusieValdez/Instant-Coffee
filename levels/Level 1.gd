@@ -4,6 +4,9 @@ var BUTLER = preload("res://entities/BUTLER/BUTLER.tscn")
 onready var BUTLER_spawn_position = $Office/BUTLERSpawnPoint.global_position
 onready var BUTLER_list = $BUTLERs
 
+func _ready():
+	$Office.spawn_npc("ben")
+
 func _on_BUTLERSpawnTimer_timeout():
 	var shops = get_node("Shops").get_children()
 	var num_shops = shops.size()

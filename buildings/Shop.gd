@@ -13,6 +13,7 @@ func get_selected_item():
 	return null
 
 func _ready():
+	randomize()
 	for child in get_node("ItemSpawnLocations").get_children():
 		spawn_coffee(child.position)
 

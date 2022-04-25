@@ -14,7 +14,6 @@ var inventory = []
 var MAX_INVENTORY_SIZE = 2
 
 onready var animationPlayer = $AnimationPlayer
-onready var blinkAnimation = $BlinkAnimationPlayer
 onready var sprite = $Sprite
 
 enum {
@@ -69,6 +68,12 @@ func _physics_process(delta):
 		velocity.y += hard_gravity * delta
 		velocity.y = clamp(velocity.y, jump_speed, max_fall_speed)
 		velocity = move_and_slide(velocity, Vector2.UP)
+	for i in MAX_INVENTORY_SIZE:
+		var itemSprite = get_node("Inventory/Inventory" + str(i + 1))
+		itemSprite.texture = null
+		if i < inventory.size():
+			var item_name = inventory[i]
+			itemSprite.texture = load("res://assets/items/" + item_name + ".png")
 
 func start_interacting_with(body):
 	interactable = body
@@ -84,7 +89,8 @@ func can_interact_with(_body):
 func _on_Hurtbox_area_entered(_area):
 	state = STUNNED
 	animationPlayer.play("Hurt")
-
-func _on_AnimationPlayer_animation_finished(anim_name):
-	if anim_name == "Hurt":
-		state = MOVING
+	yield(animationPlayer, "animation_finished")
+	inventory.clear()
+	animationPlayer.play("RESET")
+	yield(animationPlayer, "animation_finished")
+	state = MOVING
