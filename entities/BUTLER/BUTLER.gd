@@ -14,14 +14,17 @@ var interactable = null
 var inventory = []
 
 enum {
+	SPAWNING,
 	MOVING,
 	STUNNED,
 }
 
-var state = MOVING
+var state = SPAWNING
 
 func _ready():
-	animation_player.play("Idle")
+	animation_player.play("WalkOut")
+	yield(animation_player, "animation_finished")
+	state = MOVING
 
 func _process(delta):
 	if inventory.size() > 0:
@@ -61,9 +64,14 @@ func _process(delta):
 			return
 		elif command_name == "DESPAWN":
 			Globals.butler_score += 1
+			state = SPAWNING
+			animation_player.play("WalkIn")
+			yield(animation_player, "animation_finished")
 			queue_free()
 			return
 	elif state == STUNNED:
+		pass
+	elif state == SPAWNING:
 		pass
 
 func start_interacting_with(body):
@@ -80,7 +88,5 @@ func _on_Hurtbox_area_entered(_area):
 	animation_player.play("Stunned")
 	$StunSoundPlayer.stream = Globals.get_sfx("robot-stun")
 	$StunSoundPlayer.play()
-
-func _on_AnimationPlayer_animation_finished(anim_name):
-	if anim_name == "Stunned":
-		state = MOVING
+	yield(animation_player, "animation_finished")
+	state = MOVING

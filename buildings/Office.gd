@@ -18,10 +18,11 @@ func spawn_npc(npc_name):
 	npc.animationPlayer.play("Idle")
 
 func _on_orders_completed():
-	npc.animationPlayer.play("WalkIn")
-	yield(npc.animationPlayer, "animation_finished")
-	npc.queue_free()
+	if npc.can_interact_with:
+		npc.animationPlayer.play("WalkIn")
+		yield(npc.animationPlayer, "animation_finished")
+		npc.queue_free()
 
-	npc_name_index = (npc_name_index + 1) % npc_names.size()
-	var npc_name = npc_names[npc_name_index]
-	spawn_npc(npc_name)
+		npc_name_index = (npc_name_index + 1) % npc_names.size()
+		var npc_name = npc_names[npc_name_index]
+		spawn_npc(npc_name)

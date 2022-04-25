@@ -9,7 +9,7 @@ texture = ExtResource( 3 )
 script = ExtResource( 2 )
 
 [node name="BUTLERSpawnPoint" type="Node2D" parent="."]
-position = Vector2( -16, 56 )
+position = Vector2( 0.106796, 56 )
 
 [node name="NPCSpawnPoint" type="Node2D" parent="."]
 position = Vector2( 0.245532, 56.7366 )

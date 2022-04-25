@@ -6,6 +6,7 @@ onready var animationPlayer = $AnimationPlayer
 onready var sprite = $Sprite
 onready var level = get_node("../..")
 var num_orders = 0
+var can_interact_with = true
 
 func _ready():
 	var possible_orders = Globals.orders_by_level[level.name]
@@ -30,4 +31,5 @@ func interact_with(body):
 			$GiveCoffeeSoundPlayer.play()
 	if num_orders == 0:
 		emit_signal("orders_completed")
+		can_interact_with = false
 	return false

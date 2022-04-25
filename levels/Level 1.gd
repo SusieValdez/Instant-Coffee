@@ -48,6 +48,7 @@ func _on_BUTLERSpawnTimer_timeout():
 			}])
 	new_BUTLER.commands.append(["MOVE", BUTLER_spawn_position])
 	new_BUTLER.commands.append(["DESPAWN"])
+
 	BUTLER_list.add_child(new_BUTLER)
 	$BUTLERSpawnTimer.wait_time = rand_range(10, 20)
 	$BUTLERSpawnTimer.start()
